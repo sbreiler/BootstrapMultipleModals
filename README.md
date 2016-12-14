@@ -1,7 +1,7 @@
 # bootstrap-multi-modals
 Add the possibility to open more than one modal in bootstrap, fixes *all* glitchy problems when doing so.
 
-Tested on Bootstrap Version 3.3.2, all recent versions should work.
+Tested on Bootstrap Version 3.0.3, all recent versions should work.
 
 **Features:**
  - small
@@ -10,6 +10,8 @@ Tested on Bootstrap Version 3.3.2, all recent versions should work.
  - fix margin (flicker) on body, when more than one bootstrap model is opened/closed
  - fix non-scrollable modal after closing another modal
  - re-focus top most modal when a modal is closed
+ 
+*Some problems are fixed in newer bootstrap version*
 
 ## Samples
 Without my fix: https://rawgit.com/sbreiler/bootstrap-multi-modals/master/sample-original.html
