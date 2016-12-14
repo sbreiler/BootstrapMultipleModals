@@ -1,7 +1,7 @@
 # bootstrap-multi-modals
 Add the possibility to open more than one modal in bootstrap, fixes *all* glitchy problems when doing so.
 
-Tested on Bootstrap Version 3.0.3, all recent versions should work.
+Tested on Bootstrap Version 3.0.3, all recent versions should work too.
 
 **Features:**
  - small
@@ -25,4 +25,4 @@ Just add `<script src="bootstrap-multi-modals.js"></script>` **after** `bootstra
 *"Extends the default Bootstrap Modal class. Responsive, stackable, ajax and more."* https://github.com/jschr/bootstrap-modal
 
 ---
-If you have problems or additions let me know :-)
+If you have problems or additions [let me know](https://github.com/sbreiler/bootstrap-multi-modals/issues) :-)
