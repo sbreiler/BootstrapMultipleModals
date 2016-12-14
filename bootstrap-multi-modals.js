@@ -1,7 +1,7 @@
 /*!
  * bootstrap-multi-modals v0.1.1 (https://github.com/sbreiler/bootstrap-multi-modals)
  *
- * Copyright 2016 bootstrap-multi-modals
+ * Copyright (c) 2016 Steffen Breiler
  * Licensed under MIT (https://github.com/sbreiler/bootstrap-multi-modals/blob/master/LICENSE)
  */
 
