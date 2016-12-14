@@ -1,5 +1,5 @@
 /*!
- * bootstrap-multi-modals v0.1.0 (https://github.com/sbreiler/bootstrap-multi-modals)
+ * bootstrap-multi-modals v0.1.1 (https://github.com/sbreiler/bootstrap-multi-modals)
  *
  * Copyright 2016 bootstrap-multi-modals
  * Licensed under MIT (https://github.com/sbreiler/bootstrap-multi-modals/blob/master/LICENSE)
@@ -31,6 +31,22 @@
             // reset orginal padding-right (as if this modal is the first one), so modal-plugin can do it's "thing"
             $body.css('padding-right', originalBodyPad);
         });
+		
+		$(to).on('shown.bs.modal', function (e) {
+			// attach backdrop to modal (fix for older bootstrap release)
+			if($(this).find('.modal-backdrop').length === 0) {
+				var $backdrop = $('body > .modal-backdrop').first();
+				
+				$body.append(
+					$('<div />')
+						.append($backdrop)
+						.append(this)
+				);
+
+				// re-focus
+				$(this).trigger('focus');
+			}
+		});
 
         $(to).on('hidden.bs.modal', function(e) {
             var $visible_modals = $('.modal:visible'); // get a list of visible modals, after closing this one
@@ -43,6 +59,10 @@
                 // re-add the following class to the body
                 // credits goes to "H Dog": http://stackoverflow.com/a/30876481/4945333
                 $('body', document).addClass('modal-open');
+				// re-run on older version, to get executed after all 'hidden.bs.modal'-Events are run
+				setTimeout(function() {
+					$('body', document).addClass('modal-open');
+				}, 10);
 
                 // focus the top most modal
                 var topMostModal = null;
@@ -92,6 +112,8 @@
         // call orginal $.modal(...) function
         // 1) inject "this" to the function (~html-elements/jquery-elements)
         // 2) passthrough any argument
-        return org_modal.apply(this, arguments);
+        var res = org_modal.apply(this, arguments);
+		
+		return res;
     };
 }(jQuery);
