@@ -11,6 +11,11 @@ Tested on Bootstrap Version 3.3.2, all recent versions should work.
  - fix non-scrollable modal after closing another modal
  - re-focus top most modal when a modal is closed
 
+## Samples
+Without my fix: https://rawgit.com/sbreiler/bootstrap-multi-modals/master/sample-original.html
+
+With fix: https://rawgit.com/sbreiler/bootstrap-multi-modals/master/sample-withfix.html
+
 ## How to use
 Just add `<script src="bootstrap-multi-modals.js"></script>` **after** `bootstrap.min.js` or `bootstrap.js`
 
