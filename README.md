@@ -13,3 +13,6 @@ If you have problems or additions let me know :-)
 
 ## How to use
 Just add `<script src="bootstrap-multi-modals.js"></script>` **after** `bootstrap.min.js` or `bootstrap.js`
+
+## Similar projects
+*"Extends the default Bootstrap Modal class. Responsive, stackable, ajax and more."* https://github.com/jschr/bootstrap-modal
