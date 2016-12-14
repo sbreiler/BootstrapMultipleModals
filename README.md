@@ -10,3 +10,10 @@ Features:
  - fix non-scrollable modal after closing another modal
 
 If you have problems or additions let me know :-)
+
+## How to use
+Just add 
+```javascript
+<script src="bootstrap-multi-modals.js"></script>
+```
+**after** bootstrap.min.js or bootstrap.js
