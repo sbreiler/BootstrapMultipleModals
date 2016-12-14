@@ -36,11 +36,12 @@
             var $visible_modals = $('.modal:visible'); // get a list of visible modals, after closing this one
 
             if( $visible_modals.length > 0 ) {
-                // this closing modal resetted the padding, so we need to re-apply it (still open modals!)
-                $body.css('padding-right', originalBodyPad + measureScrollbar() );
+                // this closing modal reseted the padding, so we need to re-apply it (still open modals!)
+                $body.css('padding-right', originalBodyPad + measureScrollbar());
 
                 // if a second modal is closed, the first modal is unscrollable - to fix that,
                 // re-add the following class to the body
+                // credits goes to "H Dog": http://stackoverflow.com/a/30876481/4945333
                 $('body', document).addClass('modal-open');
 
                 // focus the top most modal
@@ -59,6 +60,10 @@
                 if(topMostModal) {
                     $(topMostModal).trigger('focus');
                 }
+            }
+            else {
+                // shouldn't be needed, but just in case reset padding on last modal
+                $body.css('padding-right', originalBodyPad);
             }
         });
     };
