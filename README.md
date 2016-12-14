@@ -24,5 +24,9 @@ Just add `<script src="bootstrap-multi-modals.js"></script>` **after** `bootstra
 ## Similar projects
 *"Extends the default Bootstrap Modal class. Responsive, stackable, ajax and more."* https://github.com/jschr/bootstrap-modal
 
+## ToDo
+ - on some bootstrap versions, pressing esc won't close the top most modal (see: http://jsfiddle.net/8N3T8/1/)
+ - check if modal has backdrop-option enabled, before searching/re-attaching it
+
 ---
 If you have problems or additions [let me know](https://github.com/sbreiler/bootstrap-multi-modals/issues) :-)
