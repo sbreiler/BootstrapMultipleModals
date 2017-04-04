@@ -22,6 +22,27 @@
         $body[0].removeChild(scrollDiv);
         return scrollbarWidth;
     };
+	
+	var moveBackdrop = function (element, zindex) {
+		// attach backdrop to modal (fix for older bootstrap release)		
+		if( ($(this).find('.modal-backdrop').length === 0) && ($('body > .modal-backdrop').length > 0) ) {
+			var $backdrop = $('body > .modal-backdrop').last();
+			
+			/*if( $(this).parent().is($body) ) {
+				$body.append(
+					// create helper div
+					$('<div />')
+						.append(this)
+						.append($backdrop)
+				);
+			}
+			else {*/
+				//$(this).parent().append($backdrop);
+			//}
+			
+			$backdrop.css('z-index', zindex);
+		}
+	};
 
     var attachEvents = function(to) {
         $(to).on('show.bs.modal', function (e) {
@@ -31,26 +52,17 @@
 
             // reset orginal padding-right (as if this modal is the first one), so modal-plugin can do it's "thing"
             $body.css('padding-right', originalBodyPad);
+			
+			// try to run moveBackdrop soon (reduce backdrop "flicker")
+			// won't work if we run this immediately, because backdrop is created after this event is fired
+			setTimeout($.proxy(moveBackdrop, this, this, zindex - 1), 10);
         });
 
         $(to).on('shown.bs.modal', function (e) {
-            // attach backdrop to modal (fix for older bootstrap release)
-            if($(this).find('.modal-backdrop').length === 0) {
-                var $backdrop = $('body > .modal-backdrop').first();
-
-                $backdrop.css('z-index', zindex-1);
-
-                $(this).parent().append($backdrop);
-
-                /*$body.append(
-                    $('<div />')
-                        .append($backdrop)
-                        .append(this)
-                );*/
-
-                // re-focus
-                $(this).trigger('focus');
-            }
+			moveBackdrop(this, zindex - 1); // run again, if it didn't worked the first time
+			
+            // re-focus
+			$(this).trigger('focus');
         });
 
         $(to).on('hidden.bs.modal', function(e) {
@@ -85,6 +97,10 @@
                 if(topMostModal) {
                     $(topMostModal).trigger('focus');
                 }
+				
+				if( $('body > .modal-backdrop').length > 0 ) {
+					$('body > .modal-backdrop').last().css('z-index', topMostzIndex - 1);
+				}
             }
             else {
                 // shouldn't be needed, but just in case reset padding on last modal
